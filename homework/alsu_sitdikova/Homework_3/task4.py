@@ -3,9 +3,9 @@
 
 a, b = int(input()), int(input())
 
-c = (a**2 + b**2)**0.5
+c = (a ** 2 + b ** 2) ** 0.5
 
-square = (a * b)*0.5
+square = (a * b) * 0.5
 
 print(c)
 print(square)
