@@ -30,7 +30,7 @@ print(my_dict["tuple"][-1])
 
 my_dict["list"].append(0)
 my_dict["list"].pop(1)
-my_dict["dict"].setdefault("i am a tuple", "hello tuple")
+my_dict["dict"]["i am a tuple",] = "hello tuple"
 my_dict["dict"].pop(3)
 my_dict["set"].add("a")
 my_dict["set"].remove("a")
