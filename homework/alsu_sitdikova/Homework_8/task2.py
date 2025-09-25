@@ -5,10 +5,8 @@
 На всякий случай, напомню, что превращать результат работы генератора в список - неправильно.
 """
 
-import sys
 
-
-def fibbonachi_nums():
+def fibonachi_nums():
     n = 0
     f_num = 1
 
@@ -19,7 +17,7 @@ def fibbonachi_nums():
 
 def get_num(n):
     count = 1
-    for i in fibbonachi_nums():
+    for i in fibonachi_nums():
         if count == n:
             print(i)
             break
@@ -29,4 +27,4 @@ def get_num(n):
 get_num(5)
 get_num(200)
 get_num(10000)
-get_num(100000)
+get_num(100000)  # Слишком большое число ValueError
