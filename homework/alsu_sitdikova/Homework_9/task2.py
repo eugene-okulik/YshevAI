@@ -14,7 +14,7 @@ hot_days = list(filter(lambda x: x > 28, temperatures))
 
 max_hot_day = max(hot_days)
 min_hot_day = min(hot_days)
-avg_hot_day = int(sum(hot_days)/len(hot_days))
+avg_hot_day = int(sum(hot_days) / len(hot_days))
 
 print(hot_days)
 print(max_hot_day)
