@@ -58,14 +58,14 @@ class SchoolBook(Book):
                f"предмет: {self.subject}, класс: {self.grade}{self.is_reserved}"))
 
 
-first_book = Book("Гордость и предубеждение", "Джей Остин", 350, 12345,  False)
+first_book = Book("Гордость и предубеждение", "Джей Остин", 350, 12345, False)
 second_book = Book("Мемуары Гейши", "Артур Голд", 240, 345, False)
 third_book = Book("Идиот", "Достоевский", 500, 5467, False)
 fourth_book = Book("Война и Мир", "Лев Толстой", 1005, 2342, True)
 fifth_book = Book("Кайтусь-чародей", "Януш Корчак", 150, 234, False)
 
 
-student_first_book = SchoolBook("Алгебра", "Иванов", 200, 34525,  False, "Математика", "7", True)
+student_first_book = SchoolBook("Алгебра", "Иванов", 200, 34525, False, "Математика", "7", True)
 student_second_book = SchoolBook("Русский язык", "Петров", 300, 967, True, "Русский язык", 4, True)
 student_third_book = SchoolBook("Окружающий мир", "Сидоров", 250, 761, False, "Биология", 5, False)
 
