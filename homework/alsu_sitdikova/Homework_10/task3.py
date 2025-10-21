@@ -22,9 +22,9 @@ first_num, second_num = (int(i) for i in input().split())
 
 
 def finish_me(func):
-    def wrapper(first, second, operation):
+    def wrapper(first, second):
         if first < 0 or second < 0:
-            return func(first, second, '*')
+            return func(first, second, operation='*')
 
         elif first == second:
             return func(first, second, '+')
@@ -51,4 +51,4 @@ def calc(first, second, operation):
             return first / second
 
 
-print(calc(first_num, second_num, '+'))
+print(calc(first_num, second_num))
