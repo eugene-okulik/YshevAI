@@ -1,0 +1,63 @@
+Создайте в базе данных полный набор информации о студенте, заполнив все таблички:
+
+Создайте студента (student)
+Создайте несколько книг (books) и укажите, что ваш созданный студент взял их
+Создайте группу (group) и определите своего студента туда
+Создайте несколько учебных предметов (subjects)
+Создайте по два занятия для каждого предмета (lessons)
+Поставьте своему студенту оценки (marks) для всех созданных вами занятий
+Все действия нужно выполнить именно в том порядке, который указан здесь в задании.
+___________________________________________________________________________________
+
+1. INSERT INTO students (name, second_name) VALUES
+('Richelle', 'Test')
+
+2. INSERT INTO books (title, taken_by_student_id) VALUES 
+('Математический анализ, теория поля', 22249),
+('Рассуждение о методе', 22249),
+('Статистика для исследователей', 22249)
+
+3. INSERT INTO `groups` (title, start_date, end_date) VALUES 
+('qa_subjs', 'june 2025', 'april 2026')
+
+UPDATE students SET group_id=21964 WHERE id=22249
+
+4. INSERT INTO subjects (title) VALUES
+('math_21964'),
+('philosophy_21964'),
+('statistics_21964') 
+
+5. INSERT INTO lessons (title, subject_id) VALUES
+('math_analysis', 13775),
+('lin_algebra', 13775), 
+('philosophy_ontology', 13776),
+('philosophy_history', 13776),
+('stat_math', 13777),
+('stat_pract', 13777)
+
+6. INSERT INTO marks (value, lesson_id, student_id) VALUES
+(5, 74694, 22249),
+(5, 74695, 22249),
+(4, 74696, 22249),
+(4, 74697, 22249),
+(5, 74698, 22249),
+(5, 74699, 22249)
+_________________________________________________________________________
+
+Получите информацию из базы данных:
+
+Все оценки студента
+Все книги, которые находятся у студента
+Для вашего студента выведите всё, что о нем есть в базе: группа, книги, оценки с названиями занятий и предметов (всё одним запросом с использованием Join)
+__________________________________________________________________________________________________________________________________________________________
+
+1. SELECT * FROM marks WHERE student_id=22249
+2. SELECT * FROM books WHERE taken_by_student_id=22249
+
+3. SELECT  students.name, students.second_name, `groups`.title,  `groups`.start_date,  `groups`.end_date, marks.value, lessons.title, subjects.title, books.title  FROM students 
+JOIN `groups` ON students.group_id = `groups`.id
+JOIN marks ON marks.student_id = students.id 
+JOIN lessons ON marks.lesson_id = lessons.id
+JOIN subjects ON lessons.subject_id = subjects.id 
+JOIN books ON books.taken_by_student_id= students.id
+WHERE students.id = 22249
