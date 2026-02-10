@@ -1,12 +1,11 @@
 import mysql.connector as mysql
 
-with mysql.connect(
-                   user='st-onl',
+with mysql.connect(user='st-onl',
                    passwd='AVNS_tegPDkI5BlB2lW5eASC',
                    host='db-mysql-fra1-09136-do-user-7651996-0.b.db.ondigitalocean.com',
                    port='25060',
-                   database='st-onl'
-                   ) as db:
+                   database='st-onl') as db:
+
     cursor = db.cursor(dictionary=True)
 
     insert_query_student = "INSERT INTO students (name, second_name) VALUES (%s, %s)"
@@ -74,17 +73,15 @@ with mysql.connect(
 
     select_query_marks = "SELECT * FROM marks WHERE student_id=%s"
     select_query_books = "SELECT * FROM books WHERE taken_by_student_id=%s"
-    select_query_join = """
-    SELECT  students.name, students.second_name, `groups`.title,  `groups`.start_date,  
-    `groups`.end_date, marks.value, lessons.title, subjects.title, books.title  
-    FROM students 
+    select_query_join = """SELECT  students.name, students.second_name, `groups`.title,  `groups`.start_date,
+    `groups`.end_date, marks.value, lessons.title, subjects.title, books.title
+    FROM students
     JOIN `groups` ON students.group_id = `groups`.id
-    JOIN marks ON marks.student_id = students.id 
+    JOIN marks ON marks.student_id = students.id
     JOIN lessons ON marks.lesson_id = lessons.id
-    JOIN subjects ON lessons.subject_id = subjects.id 
+    JOIN subjects ON lessons.subject_id = subjects.id
     JOIN books ON books.taken_by_student_id= students.id
-    WHERE students.id = %s
-    """
+    WHERE students.id = %s"""
 
     cursor.execute(select_query_marks, (student_id,))
     for i in cursor.fetchall():
