@@ -24,13 +24,13 @@ def data_from_db():
                        port=os.getenv('DB_PORT'),
                        database=os.getenv('DB_NAME')) as db:
         cursor = db.cursor()
-        select_query_join = """SELECT students.name, students.second_name, `groups`.title, books.title, subjects.title, 
+        select_query_join = """SELECT students.name, students.second_name, `groups`.title, books.title, subjects.title,
         lessons.title,  marks.value
-        FROM students 
+        FROM students
         JOIN `groups` ON students.group_id = `groups`.id
-        JOIN marks ON marks.student_id = students.id 
+        JOIN marks ON marks.student_id = students.id
         JOIN lessons ON marks.lesson_id = lessons.id
-        JOIN subjects ON lessons.subject_id = subjects.id 
+        JOIN subjects ON lessons.subject_id = subjects.id
         JOIN books ON books.taken_by_student_id= students.id
         """
 
