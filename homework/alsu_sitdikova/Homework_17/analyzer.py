@@ -115,21 +115,17 @@ class LogFiles:
             line += 1
         return file_dict
 
-    @staticmethod
-    def _unpack_res(res: list):
-        for i in res:
-            for k, kv in i.items():
-                print("\t\t", k)
-                for vk, v in kv.items():
-                    print(f"\t\t\t{vk}: {v}")
-
     def show_line_with_text(self):
         for outer_key, inner_dict in self._get_block_by_date().items():
             if inner_dict:
                 print("LOG FILE NAME:", Fore.BLUE + outer_key + Style.RESET_ALL)
             for inner_key, value in inner_dict.items():
                 print("\tThe time:", Fore.CYAN + inner_key + Style.RESET_ALL)
-                print(self._unpack_res(value))
+                for i in value:
+                    for k, kv in i.items():
+                        print("\t\t", k)
+                        for vk, v in kv.items():
+                            print(f"\t\t\t{vk}: {v}")
 
     def __repr__(self):
         return self._get_block_by_date()
