@@ -45,7 +45,7 @@ def req_put():
     body = {"name": "Vegetables",
             "data": {"vegetable": "carrot", "color": "orange", "count": 7}}
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{obj_id}', json=body, headers=headers)
-    assert response.json()["name"] == "Vegetables", f"Ошибка, name: {response.json()["name"]}"
+    assert response.json()["name"] == "Vegetables", f"Ошибка, name: {response.json()}"
     assert response.json()["data"]["vegetable"] == "carrot", (f"Ошибка, vegetable: "
                                                               f"{response.json()["data"]["vegetable"]}")
     assert response.json()["data"]["color"] == "orange", f"Ошибка, color: {response.json()["data"]["color"]}"
