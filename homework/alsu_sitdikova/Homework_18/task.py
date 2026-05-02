@@ -12,7 +12,7 @@ import requests
 
 
 def req_get_all():
-    response = requests.get(f'http://objapi.course.qa-practice.com/object')
+    response = requests.get('http://objapi.course.qa-practice.com/object')
     assert response.status_code == 200, f'Неуспешный запрос, код ответа: {response.status_code}'
     return response.json()
 
