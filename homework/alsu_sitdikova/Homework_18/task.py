@@ -46,10 +46,13 @@ def req_put():
             "data": {"vegetable": "carrot", "color": "orange", "count": 7}}
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{obj_id}', json=body, headers=headers)
     data = response.json()["data"]
+    vegetable = data["vegetable"]
+    color = data["color"]
+    count = data["count"]
     assert response.json()["name"] == "Vegetables", f"Ошибка, name: {response.json()}"
-    assert response.json()["data"]["vegetable"] == "carrot", f"Ошибка, vegetable: {data["vegetable"]}"
-    assert response.json()["data"]["color"] == "orange", f"Ошибка, color: {response.json()["data"]["color"]}"
-    assert response.json()["data"]["count"] == 7, f"Ошибка, count: {response.json()["data"]["count"]}"
+    assert vegetable == "carrot", f"Ошибка, vegetable: {vegetable}"
+    assert color == "orange", f"Ошибка, color: {color}"
+    assert count == 7, f"Ошибка, count: {count}"
     req_delete_obj(obj_id)
 
 
@@ -59,7 +62,8 @@ def req_patch():
     body = {"name": "Fruits",
             "data": {"fruit": "apple", "color": "yellow", "count": 10}}
     response = requests.put(f'http://objapi.course.qa-practice.com/object/{obj_id}', json=body, headers=headers)
-    assert response.json()["data"]["count"] == 10, f"Ошибка, count: {response.json()["data"]["count"]}"
+    count = response.json()["data"]["count"]
+    assert count == 10, f"Ошибка, count: {count}"
     req_delete_obj(obj_id)
 
 
