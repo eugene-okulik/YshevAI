@@ -16,7 +16,7 @@ import pytest
 
 
 @pytest.fixture(scope="function")
-def req_new_post():
+def new_obj_id():
     headers = {'Content-Type': 'application/json'}
     body = {"name": "Fruits", "data": {"fruit": "apple", "color": "yellow", "count": 3}}
     response = requests.post('http://objapi.course.qa-practice.com/object', json=body, headers=headers)
@@ -31,10 +31,10 @@ def req_delete_obj(obj_id):
 
 
 @pytest.fixture(scope="function")
-def new_post_id(req_new_post):
+def new_post_id(new_obj_id):
     print("before test")
-    yield req_new_post
-    req_delete_obj(req_new_post)
+    yield new_obj_id
+    req_delete_obj(new_obj_id)
     print("after_test")
 
 
@@ -79,18 +79,17 @@ def test_req_put(new_post_id):
 @pytest.mark.medium
 def test_req_patch(new_post_id):
     headers = {'Content-Type': 'application/json'}
-    body = {"name": "Fruits",
-            "data": {"fruit": "apple", "color": "yellow", "count": 10}}
-    response = requests.put(f'http://objapi.course.qa-practice.com/object/{new_post_id}', json=body, headers=headers)
+    body = {"data": {"count": 10}}
+    response = requests.patch(f'http://objapi.course.qa-practice.com/object/{new_post_id}', json=body, headers=headers)
     count = response.json()["data"]["count"]
     assert count == 10, f"Ошибка, count: {count}"
 
 
-def test_req_delete(req_new_post):
-    response = requests.delete(f'http://objapi.course.qa-practice.com/object/{req_new_post}')
+def test_req_delete(new_obj_id):
+    response = requests.delete(f'http://objapi.course.qa-practice.com/object/{new_obj_id}')
     print(response.text)
     assert response.status_code == 200, f'Неуспешный запрос, код ответа: {response.status_code}'
-    assert response.text == f"Object with id {req_new_post} successfully deleted"
+    assert response.text == f"Object with id {new_obj_id} successfully deleted"
 
 
 def test_req_get_all():
