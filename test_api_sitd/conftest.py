@@ -8,7 +8,7 @@ from YshevAI.test_api_sitd.endpoints.req_put import PutPost
 
 
 @pytest.fixture()
-def new_obj(create_new_obj,  delete_post_endpoint):
+def new_obj(create_new_obj, delete_post_endpoint):
     obj_id = create_new_obj
     print(f"obj_id: {obj_id}")
     yield obj_id

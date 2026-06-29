@@ -14,8 +14,9 @@ class Endpoint:
 
     @allure.step("Проверка соответсвия по ключу name")
     def is_name_correct(self):
-        assert self.body["name"] == self.json["name"], (f"They are not equal:{self.body["name"]} "
-                                                        f"is not {self.json["name"]}")
+        sent_name = self.body["name"]
+        received_name = self.json["name"]
+        assert sent_name == received_name, f"They are not equal:{sent_name} is not {received_name}"
 
     @allure.step("Проверка соответсвия по ключу data")
     def is_data_correct(self):
