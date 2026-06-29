@@ -49,12 +49,6 @@ def test_req_delete_post(delete_post_endpoint, create_new_obj):
     delete_post_endpoint.is_text_correct()
 
 
-@pytest.mark.parametrize("post_id", [2,3,4, 5,6,7,8])
-def req_delete_post(delete_post_endpoint, post_id):
-    print(post_id)
-    delete_post_endpoint.req_delete(post_id)
-
-
 @allure.feature("API запросы")
 @allure.story("GET запрос по id")
 def test_req_get_post_by_id(new_obj, get_post_endpoint):

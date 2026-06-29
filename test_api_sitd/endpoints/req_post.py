@@ -13,5 +13,3 @@ class PostPost(Endpoint):
         self.json = self.response.json()
         print(self.json)
         return self.response
-
-

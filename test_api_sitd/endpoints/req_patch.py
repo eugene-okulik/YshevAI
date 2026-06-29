@@ -1,4 +1,3 @@
-import allure
 import requests
 
 from YshevAI.test_api_sitd.endpoints.endpoint import Endpoint

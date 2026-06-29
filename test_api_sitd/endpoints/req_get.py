@@ -1,4 +1,3 @@
-import allure
 import requests
 
 from YshevAI.test_api_sitd.endpoints.endpoint import Endpoint
@@ -14,5 +13,3 @@ class GetPost(Endpoint):
         self.response = requests.get(f'{self.url}')
         self.json = self.response.json()
         return self.response
-
-
